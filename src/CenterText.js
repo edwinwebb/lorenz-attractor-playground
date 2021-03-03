@@ -1,4 +1,4 @@
-import { Text } from "@react-three/drei/Text";
+import { Text } from "@react-three/drei";
 import { Box, useFlexSize } from '@react-three/flex';
 
 export default function CenterText(props) {

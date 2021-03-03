@@ -1,5 +1,5 @@
 
-import { Text } from "@react-three/drei/Text"
+import { Text } from "@react-three/drei"
 import { Flex, Box, useFlexSize, useReflow } from '@react-three/flex'
 import { useLoader } from 'react-three-fiber';
 import { Suspense, useEffect } from 'react'; 

@@ -1,4 +1,4 @@
-import { Text } from "@react-three/drei/Text"
+import { Text } from "@react-three/drei"
 import { Line, Plane } from "@react-three/drei"
 import { Box, useFlexSize } from '@react-three/flex'
 import lorenz from '../lorenz';
