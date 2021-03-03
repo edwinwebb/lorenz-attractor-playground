@@ -8,8 +8,6 @@ import Chaos from './pages/Chaos';
 import Attractor from './pages/Attractor';
 import Playground from './pages/Playground';
 import Title from './pages/Title';
-import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
-import {Plane, useAspect } from '@react-three/drei';
 import CenterText from './CenterText';
 
 const state = {
