@@ -9,6 +9,7 @@ import Attractor from './pages/Attractor';
 import Playground from './pages/Playground';
 import Title from './pages/Title';
 import CenterText from './CenterText';
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
 
 const state = {
     top: 0
@@ -29,14 +30,12 @@ function Content() {
             {/* <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <Title />
             </Box> */}
-            
-            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
-                <CenterText text="THE BUTTERFLY EFFECT" fontSize={ 1 } />
-            </Box>
             <Box width="100%" height="auto" minHeight="100%" centerAnchor>
                 <Intro />
             </Box>
-            
+            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
+                <CenterText text="THE BUTTERFLY EFFECT" fontSize={ 1 } />
+            </Box>
             <Chaos />
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <CenterText 
@@ -45,10 +44,10 @@ function Content() {
                 />
             </Box>
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
-                <CenterText text="Chaos - systems whose apparently random states of disorder and irregularities are actually governed by underlying patterns that are highly sensitive to initial conditions" fontSize={ 1 } />
+                <Attractor />
             </Box>
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
-                <Attractor />
+                <CenterText text="Chaos - systems whose apparently random states of disorder and irregularities are actually governed by underlying patterns that are highly sensitive to initial conditions" fontSize={ 1 } />
             </Box>
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <CenterText 
