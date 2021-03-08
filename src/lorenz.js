@@ -15,6 +15,21 @@ export function lorenzObj(data) {
     ]
 }
  
+export function nextLorenzPoint(position = [1,1,1], data) {
+    const {
+        sigma = 28,
+        rho = 10,
+        beta = 8/3,
+        increment = 0.001
+    } = data
+    const [x,y,z] = position;
+
+    return [
+        x + increment * (sigma * (y-x)),
+        y + increment * (x * (rho-z) - y),
+        z + increment * (x * y - beta * z)
+    ]
+}
 
 export function lorenzPoints(data) {
     const {
@@ -39,20 +54,4 @@ export function lorenzPoints(data) {
     },[start]);
 
     return points
-}
-
-export function nextLorenzPoint(position = [1,1,1], data) {
-    const {
-        sigma = 28,
-        rho = 10,
-        beta = 8/3,
-        increment = 0.001
-    } = data
-    const [x,y,z] = position;
-
-    return [
-        x + increment * (sigma * (y-x)),
-        y + increment * (x * (rho-z) - y),
-        z + increment * (x * y - beta * z)
-    ]
 }

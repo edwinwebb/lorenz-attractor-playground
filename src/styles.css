@@ -29,14 +29,26 @@ body {
   left: 300px;
 }
 
+.playground {
+  font-family: 'Segoe UI', Helvetica, Tahoma, Geneva, Verdana, sans-serif;
+}
+
 label {
   display: inline-block;
   width: 180px;
   padding-left:10px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 input {
-  width: 100px;
+  width: 180px;
+  margin-left: 10px;
+}
+
+hr {
+  width: 190px;
+  margin-left: 10px;
 }
 
 h1, p {

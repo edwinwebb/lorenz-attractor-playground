@@ -33,6 +33,7 @@ function Content() {
                 <Title />
             </Box> */}
             
+            
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <CenterText text="THE BUTTERFLY EFFECT" fontSize={ 1 } />
             </Box>
@@ -64,6 +65,9 @@ function Content() {
                 <About />
             </Box>
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
+                <Playground />
+            </Box>
+            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <CenterText 
                         text="View Source" 
                         fontSize={ 1 } 
@@ -81,7 +85,7 @@ export default function App() {
         })
     })
     
-    return(<div className="maindiv" style={{height: "900vh"}}>
+    return(<div className="maindiv" style={{height: "1000vh"}}>
         <Canvas camera={{position:[0,0,10], near: 1, far: 100, fov:80}} className="maincanvas">
             <color attach="background" args={[0x333333]} />
             <spotLight />
