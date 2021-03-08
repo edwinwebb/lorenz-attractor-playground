@@ -1,5 +1,5 @@
 
-import { Text } from "@react-three/drei/Text";
+import { Text } from "@react-three/drei";
 import { Box, useFlexSize } from '@react-three/flex'
 import { Plane, TransformControls, Sphere } from '@react-three/drei'
 import { useRef, useMemo  } from 'react';

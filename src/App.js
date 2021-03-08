@@ -9,6 +9,9 @@ import Attractor from './pages/Attractor';
 import Playground from './pages/Playground';
 import Title from './pages/Title';
 import CenterText from './CenterText';
+import { EffectComposer, Noise } from '@react-three/postprocessing/dist/index.cjs';
+import { BlendFunction } from 'postprocessing'
+
 
 const state = {
     top: 0
@@ -80,11 +83,14 @@ export default function App() {
     
     return(<div className="maindiv" style={{height: "900vh"}}>
         <Canvas camera={{position:[0,0,10], near: 1, far: 100, fov:80}} className="maincanvas">
-            <color attach="background" args={[0x888888]} />
+            <color attach="background" args={[0x333333]} />
             <spotLight />
             <Suspense fallback={null}>
                 <Content />
             </Suspense>
+            <EffectComposer>
+                <Noise opacity={0.025} blendMode={ BlendFunction.ADD } />
+            </EffectComposer>
         </Canvas>
     </div>)
 }
