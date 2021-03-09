@@ -20,7 +20,7 @@ function BallGrid(props) {
         const x = i % length;
         const y = Math.floor(i / length) % length;
         const z = Math.floor(i / length / length) % length;
-        const color = (x == 0 || x == length - 1) || (y == 0 || y == length-1) || (z == 0 || z == length -1) ? EDGE : CENTER;
+        const color = (x === 0 || x === length - 1) || (y === 0 || y === length-1) || (z === 0 || z === length -1) ? EDGE : CENTER;
 
         return <LorenzBall 
             key={i}
@@ -33,7 +33,7 @@ function BallGrid(props) {
             rho={28}
             beta={8/3}
         />
-    }))
+    }), [length, spacing])
 
 
     return(<group scale={[0.15, 0.15, 0.15]}>

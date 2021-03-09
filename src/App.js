@@ -1,13 +1,12 @@
 import React, {useRef, useEffect, Suspense} from 'react'
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
-import { Flex, Box, useFlexSize} from '@react-three/flex'
+import { Flex, Box } from '@react-three/flex'
 import lerp from 'lerp';
 import Intro from './pages/Intro';
 import About from './pages/About';
 import Chaos from './pages/Chaos';
 import Attractor from './pages/Attractor';
 import Playground from './pages/Playground';
-import Title from './pages/Title';
 import CenterText from './CenterText';
 import { EffectComposer, Noise } from '@react-three/postprocessing/dist/index.cjs';
 import { BlendFunction } from 'postprocessing'
@@ -19,7 +18,7 @@ const state = {
 
 function Content() {
     const pagesGroup = useRef();
-    const { viewport, size } = useThree();
+    const { viewport } = useThree();
     useFrame(() => {
         const fromTop = state.top / (window.innerHeight * 5);
         const y = viewport.height * 5 * fromTop;
@@ -28,12 +27,12 @@ function Content() {
     
     return(<group ref={pagesGroup}>
         <Flex dir="column" position={[-viewport.width / 2, viewport.height / 2, 0]} size={[viewport.width, viewport.height, 0]}>
-            
-            {/* <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
+            {/* 
+            import Title from './pages/Title';
+            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <Title />
-            </Box> */}
-            
-            
+            </Box> 
+            */}
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <CenterText text="THE BUTTERFLY EFFECT" fontSize={ 1 } />
             </Box>

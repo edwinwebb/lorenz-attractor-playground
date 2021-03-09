@@ -1,32 +1,10 @@
 
 import { Text } from "@react-three/drei";
-import { Box, useFlexSize } from '@react-three/flex'
+import { Box } from '@react-three/flex'
 import { Plane, TransformControls, Sphere } from '@react-three/drei'
 import { useRef, useMemo  } from 'react';
 import { useFrame, useUpdate } from 'react-three-fiber';
 import { Vector3 } from 'three'
-
-
-const baseData = {
-    start: 10,
-    end: 200,
-    increment: 0.001,
-    rho: 28,
-    sigma: 10,
-    beta: 8/3,
-    x: 0.0001,
-    y: 0.0001,
-    z: 0.0001
-}
-
-const a1 =  {
-    ...baseData
-}
-
-const a2 =  {
-    ...baseData,
-    z: 0.0001
-}
 
 function BallWithTrail(props) {
     const { 
@@ -67,7 +45,6 @@ function BallWithTrail(props) {
 
 function LorenzBall(props) {
     const { 
-        time,
         color = 'red',
         increment,
         rho,
@@ -75,7 +52,7 @@ function LorenzBall(props) {
         beta,
         length
     } = props;
-    const points = useMemo(() => (lorenzPoints({...props})), [rho, sigma, beta, increment, length]);
+    const points = useMemo(() => (lorenzPoints({rho, sigma, beta, increment, length})), [rho, sigma, beta, increment, length]);
 
     return (<BallWithTrail points={ points } color={ color } />)
 }

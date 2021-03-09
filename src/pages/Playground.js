@@ -1,24 +1,15 @@
 import { Html } from '@react-three/drei';
-
 import { useState } from 'react';
-import {Plane, TransformControls } from '@react-three/drei';
-import { Box, useFlexSize } from '@react-three/flex';
+import { TransformControls } from '@react-three/drei';
+import { Box } from '@react-three/flex';
 import { useRef, useMemo  } from 'react';
 import { useFrame, useUpdate } from 'react-three-fiber';
 import { Vector3 } from 'three';
 import { lorenzPoints } from '../lorenz'
 
-function Inner(props) {
-    const [width, height] = useFlexSize()
-    const { color = 'blue' } = props;
-    console.log(width, height)
-
-    return <Plane args={[width, height]} ><meshBasicMaterial color={color} /></Plane>
-  }
 
 function BallWithTrail(props) {
     const { 
-        color = 'white',
         points = [[0,0,0]],
         speed = 10
     } = props;
@@ -54,18 +45,15 @@ function BallWithTrail(props) {
 
 function LorenzBall(props) {
     const { 
-        time,
         color = 'red',
-        increment,
         rho,
         sigma,
         beta,
-        length,
         x,
         y,
         z
     } = props;
-    const points = useMemo(() => (lorenzPoints({...props, start: [x,y,z]})), [rho, sigma, beta, x, y, z]);
+    const points = useMemo(() => (lorenzPoints({rho, sigma, beta, start: [x,y,z]})), [rho, sigma, beta, x, y, z]);
 
     return (<BallWithTrail points={ points } color={ color } />)
 }

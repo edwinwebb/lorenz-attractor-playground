@@ -1,8 +1,7 @@
 
 import { Text } from "@react-three/drei"
-import { Flex, Box, useFlexSize, useReflow } from '@react-three/flex'
+import { Box } from '@react-three/flex'
 import { useLoader } from 'react-three-fiber';
-import { Suspense, useEffect } from 'react'; 
 import * as THREE from 'three'
 
 const title = "Edward Norton Lorenz"
@@ -21,8 +20,6 @@ const textFormat = {
 
 function Image() {
     const texture = useLoader(THREE.TextureLoader, portrait)
-    // const [width, height] = useFlexSize()
-    // console.log(width,height)
 
     return (
         <mesh>
@@ -38,7 +35,7 @@ export default function Intro() {
             <Box width={12} height={3}>
                 <Box height={0.6} mt={0.1} ml={0.2}><Text {...textFormat} maxWidth={11.6} color={0x010101} children={body2} /></Box>
             </Box>
-            <Box width={2} height={3} centerAnchor align="flex-start" centerAnchor>
+            <Box width={2} height={3} align="flex-start" centerAnchor>
                 <Image />
             </Box>
             <Box width={10} height={5} grow={1} dir="column">
