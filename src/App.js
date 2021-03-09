@@ -51,19 +51,11 @@ function Content() {
                 />
             </Box>
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
-                <CenterText text="Chaos - systems whose apparently random states of disorder and irregularities are actually governed by underlying patterns that are highly sensitive to initial conditions" fontSize={ 1 } />
-            </Box>
-            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <Attractor />
             </Box>
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
-                <CenterText 
-                        text="The man behind the quotes" 
-                        fontSize={ 1 } 
-                        margin={ 1 }
-                    />
+                <CenterText text="Chaos - systems whose apparently random states of disorder and irregularities are actually governed by underlying patterns that are highly sensitive to initial conditions" fontSize={ 1 } />
             </Box>
-            
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <Playground />
             </Box>
@@ -99,8 +91,3 @@ export default function App() {
     </div>)
 }
 
-
-
-// const title = "Strange Attactor";
-// const body1 = "The chaotic system is locally unstable yet globally stable: once some sequences have entered the attractor, nearby points diverge from one another but never depart from the attractor."
-// const carJungQuote = 'in all chaos there is a cosmos, in all disorder and secret order'

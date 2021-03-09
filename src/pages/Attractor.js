@@ -36,7 +36,7 @@ function BallGrid(props) {
     }))
 
 
-    return(<group scale={[0.1, 0.1, 0.1]}>
+    return(<group scale={[0.15, 0.15, 0.15]}>
         { balls }
     </group>)
 }
