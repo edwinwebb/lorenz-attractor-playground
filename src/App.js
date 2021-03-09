@@ -40,7 +40,9 @@ function Content() {
             <Box width="100%" height="auto" minHeight="100%" centerAnchor>
                 <Intro />
             </Box>
-            
+            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
+                <About />
+            </Box>
             <Chaos />
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <CenterText 
@@ -61,9 +63,7 @@ function Content() {
                         margin={ 1 }
                     />
             </Box>
-            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
-                <About />
-            </Box>
+            
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <Playground />
             </Box>

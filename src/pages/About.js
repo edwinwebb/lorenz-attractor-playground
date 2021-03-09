@@ -11,10 +11,10 @@ const body1 = "Edward Norton Lorenz (May 23, 1917 – April 16, 2008) was an Ame
 const body2 = "In chaos theory, the butterfly effect is the sensitive dependence on initial conditions in which a small change in one state of a deterministic nonlinear system can result in large differences in a later state."
 const textFormat = {
     color: 0xFFFFFF,
-    fontSize: .5,
+    fontSize: .4,
     textAlign: 'justify',
     font:"https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff",
-    maxWidth: 7.6,
+    maxWidth: 9.6,
     anchorX: 'left',
     anchorY: 'top'
 }
@@ -26,7 +26,7 @@ function Image() {
 
     return (
         <mesh>
-            <planeBufferGeometry attach="geometry" args={[1.98*2,2.87*2]} />
+            <planeBufferGeometry attach="geometry" args={[1.98,2.87]} />
             <meshBasicMaterial attach="material" map={texture} />
         </mesh>
     )
@@ -34,13 +34,16 @@ function Image() {
 
 export default function Intro() {
     return(
-        <Box width={12} height={6} wrap="wrap" dir="row">
-            <Box width={4} height={6} centerAnchor align="flex-start" centerAnchor>
+        <Box width={12} height={9} wrap="wrap" dir="row">
+            <Box width={12} height={3}>
+                <Box height={0.6} mt={0.1} ml={0.2}><Text {...textFormat} maxWidth={11.6} color={0x010101} children={body2} /></Box>
+            </Box>
+            <Box width={2} height={3} centerAnchor align="flex-start" centerAnchor>
                 <Image />
             </Box>
-            <Box width={8} height={6} grow={1} dir="column">
+            <Box width={10} height={5} grow={1} dir="column">
                 <Box height={0.6} mt={0.1} ml={0.2}><Text {...textFormat} children={title.toUpperCase()} /></Box>
-                <Box grow={1} ml={0.2}><Text {...textFormat} fontSize={0.3} children={body1 +" "+ body2} /></Box>  
+                <Box grow={1} ml={0.2}><Text {...textFormat} fontSize={0.25} children={body1} /></Box>  
             </Box>
         </Box>     
     )
