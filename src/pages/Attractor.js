@@ -1,17 +1,16 @@
 import { TransformControls } from '@react-three/drei';
 import { useFrame } from 'react-three-fiber';
 import { useRef, useMemo } from 'react';
-import { nextLorenzPoint } from "../lorenz";
+import { lorenzPoints } from "../lorenz";
 import { Box } from '@react-three/flex';
 
 // TODO
-// have animation loop
 // have cards at the top?
 
 // Colored grid of balls
 function BallGrid(props) {
-    const EDGE = 'yellow';
-    const CENTER = 'red';
+    const EDGE = 'pink';
+    const CENTER = 'orange';
 
     const length = 8;
     const spacing = 5;
@@ -28,7 +27,7 @@ function BallGrid(props) {
             x={x * spacing - length * spacing / 2}
             y={y * spacing - length * spacing / 2}
             z={z * spacing - length * spacing / 2}
-            increment={ 0.0005 }
+            increment={ 0.001 }
             sigma={10}
             rho={28}
             beta={8/3}
@@ -54,35 +53,35 @@ function LorenzBall(props) {
         z = 0
     } = props;
     const ballMeshRef = useRef();
+    const speed = 10;
 
-    useFrame( ()=>{
-        if (!ballMeshRef.current) return
-        const [x,y,z] = nextLorenzPoint([
-            ballMeshRef.current.position.x,
-            ballMeshRef.current.position.y,
-            ballMeshRef.current.position.z,
-        ],{
-            sigma,
-            rho,
-            beta,
-            increment
-        });
+    const lorenzPs = useMemo(() => (lorenzPoints({rho, sigma, beta, increment, start:[x,y,z]})), [rho, sigma, beta, increment]);
+    const startingPoints = new Array(100).fill(lorenzPs[0]);
+    const points = startingPoints.concat(lorenzPs);
+
+    useFrame( (a)=>{
+        const time = Math.floor((a.clock.oldTime / speed) % points.length) ;
+        const nextTime = time + 2 > points.length ? 0 : time + 1;
+        const [x, y, z] = points[nextTime]
+
+        if (!ballMeshRef.current) return;
+        
         ballMeshRef.current.position.x = x;
         ballMeshRef.current.position.y = y;
         ballMeshRef.current.position.z = z;
     } );
     
     return(<mesh ref={ ballMeshRef } position={[x + increment, y + increment, z + increment]}>
-        <sphereGeometry args={[0.25,16,16]} />
+        <sphereGeometry args={[0.15,16,16]} />
         <meshBasicMaterial color={ color }  />
     </mesh>)
 }
 
 
 export default function Attractor() {
-return(<Box width="100%" height="100%" centerAnchor>
-    <TransformControls mode={'rotate'} size={0.1}>
-        <BallGrid />
+    return(<Box width="100%" height="100%" centerAnchor>
+        <TransformControls mode={'rotate'} size={0.1}>
+            <BallGrid />
         </TransformControls>
     </Box>)
 }

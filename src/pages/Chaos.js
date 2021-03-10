@@ -50,9 +50,10 @@ function LorenzBall(props) {
         rho,
         sigma,
         beta,
-        length
+        length,
+        start
     } = props;
-    const points = useMemo(() => (lorenzPoints({rho, sigma, beta, increment, length})), [rho, sigma, beta, increment, length]);
+    const points = useMemo(() => (lorenzPoints({rho, sigma, beta, increment, length, start})), [rho, sigma, beta, increment, length]);
 
     return (<BallWithTrail points={ points } color={ color } />)
 }
@@ -123,7 +124,7 @@ export default function Chaos() {
             <Box width="100%" height="100%" centerAnchor>
                 <TransformControls mode={'rotate'} size={0.05}>
                     <group scale={[0.15,0.15,0.15]} position={[-1,-4.5,0]} rotation={[Math.PI/2, Math.PI*.95,Math.PI*.7]} rotationbak={[0,Math.PI / 4,Math.PI / 2]}>
-                        <LorenzBall length={2500} increment={0.01} color={'red'} />
+                        <LorenzBall length={2500} increment={0.01} color={'red'} start={[0.01,0.01,0.01]} />
                         <LorenzBall length={2500} increment={0.01} color={'pink'} start={[0.011,0.01,0.01]} />
                         <LorenzBall length={2500} increment={0.01} color={'orange'} start={[0.012,0.01,0.01]} />
                     </group>

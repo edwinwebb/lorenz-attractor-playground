@@ -9,7 +9,8 @@ import Attractor from './pages/Attractor';
 import Playground from './pages/Playground';
 import CenterText from './CenterText';
 import { EffectComposer, Noise } from '@react-three/postprocessing/dist/index.cjs';
-import { BlendFunction } from 'postprocessing'
+import { BlendFunction } from 'postprocessing';
+import './styles.css';
 
 
 const state = {
