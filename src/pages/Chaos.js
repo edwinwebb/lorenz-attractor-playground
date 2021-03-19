@@ -53,7 +53,7 @@ function LorenzBall(props) {
         length,
         start
     } = props;
-    const points = useMemo(() => (lorenzPoints({rho, sigma, beta, increment, length, start})), [rho, sigma, beta, increment, length]);
+    const points = useMemo(() => (lorenzPoints({rho, sigma, beta, increment, length, start})), [rho, sigma, beta, increment, length, start]);
 
     return (<BallWithTrail points={ points } color={ color } />)
 }

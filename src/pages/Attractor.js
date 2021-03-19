@@ -55,7 +55,7 @@ function LorenzBall(props) {
     const ballMeshRef = useRef();
     const speed = 10;
 
-    const lorenzPs = useMemo(() => (lorenzPoints({rho, sigma, beta, increment, start:[x,y,z]})), [rho, sigma, beta, increment]);
+    const lorenzPs = useMemo(() => (lorenzPoints({rho, sigma, beta, increment, start:[x,y,z]})), [rho, sigma, beta, increment, x ,y ,z]);
     const startingPoints = new Array(100).fill(lorenzPs[0]);
     const points = startingPoints.concat(lorenzPs);
 

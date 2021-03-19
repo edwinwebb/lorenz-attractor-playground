@@ -51,9 +51,11 @@ function LorenzBall(props) {
         beta,
         x,
         y,
-        z
+        z,
+        mlength,
+        increment
     } = props;
-    const points = useMemo(() => (lorenzPoints({rho, sigma, beta, start: [x,y,z]})), [rho, sigma, beta, x, y, z]);
+    const points = useMemo(() => (lorenzPoints({rho, sigma, beta, start: [x,y,z], length: mlength, increment})), [rho, sigma, beta, x, y, z, mlength, increment]);
 
     return (<BallWithTrail points={ points } color={ color } />)
 }
@@ -62,42 +64,49 @@ export default function Playground() {
     const [data, updateData] = useState({
         start: 100,
         end: 200,
-        increment: 0.001,
+        increment: 0.01,
         rho: 28,
         sigma: 10,
         beta: 8/3,
         x: 0.01,
         y: 0.01,
-        z: 0.01
+        z: 0.01,
+        mlength: 3000
     });
     return (<Box width="100%" height="auto" minHeight="100%" wrap="wrap" flexDirection="row">
         <Box width="500px" height="100%">
-        <Html>
-            <div className="playground">
-                <label>rho</label>
-                <input type="number" step="1" min="0" max="100" value={data.rho}  onChange={ (e)=>{ updateData({...data, rho: parseFloat(e.target.value)})} }/>
-                <hr />
-                <label>sigma</label>
-                <input type="number" step="1" min="0" max="30" value={data.sigma}  onChange={ (e)=>{ updateData({...data, sigma: parseFloat(e.target.value)})} }/>
-                <hr />
-                <label>beta</label>
-                <input type="number" step="0.1" min="0" max="5" value={data.beta}  onChange={ (e)=>{ updateData({...data, beta: parseFloat(e.target.value)})} }/>
-                <hr />
-                <label>x</label>
-                <input type="number" step="0.1" min="-5" max="5" value={data.x}  onChange={ (e)=>{ updateData({...data, x: parseFloat(e.target.value)})} }/>
-                <hr />
-                <label>y</label>
-                <input type="number" step="0.1" min="-5" max="5" value={data.y}  onChange={ (e)=>{ updateData({...data, y: parseFloat(e.target.value)})} }/>
-                <hr />
-                <label>z</label>
-                <input type="number" step="0.1" min="-5" max="5" value={data.z}  onChange={ (e)=>{ updateData({...data, z: parseFloat(e.target.value)})} }/>
-            </div>
-        </Html>
+            <Html>
+                <div className="playground">
+                    <label>rho</label>
+                    <input type="number" step="1" min="0" max="100" value={data.rho}  onChange={ (e)=>{ updateData({...data, rho: parseFloat(e.target.value)})} }/>
+                    <hr />
+                    <label>sigma</label>
+                    <input type="number" step="1" min="0" max="30" value={data.sigma}  onChange={ (e)=>{ updateData({...data, sigma: parseFloat(e.target.value)})} }/>
+                    <hr />
+                    <label>beta</label>
+                    <input type="number" step="0.1" min="0" max="5" value={data.beta}  onChange={ (e)=>{ updateData({...data, beta: parseFloat(e.target.value)})} }/>
+                    <hr />
+                    <label>x</label>
+                    <input type="number" step="0.1" min="-5" max="5" value={data.x}  onChange={ (e)=>{ updateData({...data, x: parseFloat(e.target.value)})} }/>
+                    <hr />
+                    <label>y</label>
+                    <input type="number" step="0.1" min="-5" max="5" value={data.y}  onChange={ (e)=>{ updateData({...data, y: parseFloat(e.target.value)})} }/>
+                    <hr />
+                    <label>z</label>
+                    <input type="number" step="0.1" min="-5" max="5" value={data.z}  onChange={ (e)=>{ updateData({...data, z: parseFloat(e.target.value)})} }/>
+                    <hr />
+                    <label>Iteration Limit</label>
+                    <input type="number" step="1000" min="1000" value={data.mlength}  onChange={ (e)=>{ updateData({...data, mlength: parseInt(e.target.value)})} }/>
+                    <hr />
+                    <label>Iteration Step</label>
+                    <input type="number" step="0.0001" min="0.0001" max="1" value={data.increment}  onChange={ (e)=>{ updateData({...data, increment: parseFloat(e.target.value)})} }/>
+                </div>
+            </Html>
         </Box>
         <Box width="50%" height="100%" flexGrow={1} centerAnchor>
             <TransformControls mode={'rotate'} size={0.05}>
                 <group scale={[0.15,0.15,0.15]} position={[-1,-4.5,0]} rotation={[Math.PI/2, Math.PI*.95,Math.PI*.7]} rotationbak={[0,Math.PI / 4,Math.PI / 2]}>
-                    <LorenzBall length={5000} increment={0.01} rho={data.rho} sigma={data.sigma} beta={data.beta} x={data.x} y={data.y} z={data.z} color={'red'} />
+                    <LorenzBall mlength={data.mlength} increment={data.increment} rho={data.rho} sigma={data.sigma} beta={data.beta} x={data.x} y={data.y} z={data.z} color={'red'} />
                 </group>
             </TransformControls>
         </Box>
