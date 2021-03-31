@@ -7,7 +7,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [
     "react",
@@ -15,20 +17,19 @@
     "fiber",
     "seed"
   ],
+  "homepage": "http://edwinwebb.github.io/lorenz-attractor-playground",
   "author": "edwin webb",
   "license": "MIT",
   "dependencies": {
-    "@react-spring/core": "^9.0.0-rc.3",
-    "@react-spring/three": "^9.0.0-rc.3",
-    "@react-spring/web": "^9.0.0-rc.3",
-    "@react-three/drei": "^2.2.17",
+    "@react-three/drei": "^3.9.0",
     "@react-three/flex": "^0.5.2",
+    "@react-three/postprocessing": "^1.5.2",
     "lerp": "^1.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "^4.0.1",
-    "react-three-fiber": "^5.3.13",
-    "three": "^0.124.0"
+    "react-scripts": "^4.0.3",
+    "react-three-fiber": "^5.3.19",
+    "three": "^0.126.1"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -44,5 +45,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

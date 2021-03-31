@@ -1,7 +1,11 @@
-import { Text } from "@react-three/drei";
-import { Line, Plane } from "@react-three/drei";
-import { Box, useFlexSize } from '@react-three/flex';
-import { useRef } from 'react';
+import { Text } from "@react-three/drei"
+import { Line, Plane } from "@react-three/drei"
+import { Box, useFlexSize } from '@react-three/flex'
+import lorenz from '../lorenz';
+import { useState, useRef } from 'react';
+import { useFrame } from "react-three-fiber";
+import lerp from 'lerp'
+
 // DONE: Does the flap of a butterfly’s wings in Brazil set off a tornado in Texas?
 // DONE: Fancy ρ=28, σ = 10, β = 8/3
 // TODO: mouse offset paralax

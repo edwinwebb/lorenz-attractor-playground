@@ -1,17 +1,15 @@
 import React, {useRef, useEffect, Suspense} from 'react'
 import { Canvas, useFrame, useThree } from 'react-three-fiber';
-import { Flex, Box } from '@react-three/flex'
+import { Flex, Box, useFlexSize} from '@react-three/flex'
 import lerp from 'lerp';
 import Intro from './pages/Intro';
 import About from './pages/About';
 import Chaos from './pages/Chaos';
 import Attractor from './pages/Attractor';
 import Playground from './pages/Playground';
+import Title from './pages/Title';
 import CenterText from './CenterText';
-import { EffectComposer, Noise } from '@react-three/postprocessing/dist/index.cjs';
-import { BlendFunction } from 'postprocessing';
-import './styles.css';
-
+import { EffectComposer, Noise } from '@react-three/postprocessing/dist/index.cjs'
 
 const state = {
     top: 0
@@ -19,29 +17,25 @@ const state = {
 
 function Content() {
     const pagesGroup = useRef();
-    const { viewport } = useThree();
+    const { viewport, size } = useThree();
+
     useFrame(() => {
         const fromTop = state.top / (window.innerHeight * 5);
         const y = viewport.height * 5 * fromTop;
-        pagesGroup.current.position.y = lerp(pagesGroup.current.position.y, y, 0.1)
+        pagesGroup.current && (pagesGroup.current.position.y = lerp(pagesGroup.current.position.y, y, 0.1))
     })
     
     return(<group ref={pagesGroup}>
         <Flex dir="column" position={[-viewport.width / 2, viewport.height / 2, 0]} size={[viewport.width, viewport.height, 0]}>
-            {/* 
-            import Title from './pages/Title';
-            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
+            
+            {/* <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <Title />
-            </Box> 
-            */}
-            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
-                <CenterText text="THE BUTTERFLY EFFECT" fontSize={ 1 } />
-            </Box>
+            </Box> */}
             <Box width="100%" height="auto" minHeight="100%" centerAnchor>
                 <Intro />
             </Box>
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
-                <About />
+                <CenterText text="THE BUTTERFLY EFFECT" fontSize={ 1 } />
             </Box>
             <Chaos />
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
@@ -57,7 +51,14 @@ function Content() {
                 <CenterText text="Chaos - systems whose apparently random states of disorder and irregularities are actually governed by underlying patterns that are highly sensitive to initial conditions" fontSize={ 1 } />
             </Box>
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
-                <Playground />
+                <CenterText 
+                        text="The man behind the quotes" 
+                        fontSize={ 1 } 
+                        margin={ 1 }
+                    />
+            </Box>
+            <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
+                <About />
             </Box>
             <Box width="100%" height="auto" minHeight="100%" justify="center" align="center">
                 <CenterText 
@@ -77,17 +78,16 @@ export default function App() {
         })
     })
     
-    return(<div className="maindiv" style={{height: "1000vh"}}>
+    return(<div className="maindiv" style={{height: "900vh"}}>
         <Canvas camera={{position:[0,0,10], near: 1, far: 100, fov:80}} className="maincanvas">
-            <color attach="background" args={[0x333333]} />
+            <color attach="background" args={[0x888888]} />
             <spotLight />
             <Suspense fallback={null}>
                 <Content />
             </Suspense>
             <EffectComposer>
-                <Noise opacity={0.025} blendMode={ BlendFunction.ADD } />
+                <Noise opacity={0.02} />
             </EffectComposer>
         </Canvas>
     </div>)
 }
-

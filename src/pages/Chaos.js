@@ -24,6 +24,8 @@ function BallWithTrail(props) {
         const time = Math.floor((a.clock.oldTime / speed) % points.length) ;
         const nextTime = time + 2 > points.length ? 0 : time + 1;
         const [x, y, z] = points[nextTime]
+
+        if(!ballMeshRef.current) return
         
         lineBufferRef.current && lineBufferRef.current.setDrawRange(0, nextTime)
         ballMeshRef.current.position.x = x;
