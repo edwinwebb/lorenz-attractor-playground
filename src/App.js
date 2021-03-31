@@ -9,7 +9,7 @@ import Attractor from './pages/Attractor';
 import Playground from './pages/Playground';
 import Title from './pages/Title';
 import CenterText from './CenterText';
-import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
+import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing/dist/index.cjs'
 
 const state = {
     top: 0
