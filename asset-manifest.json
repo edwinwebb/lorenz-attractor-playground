@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/lorenz-attractor-playground/static/css/main.6aaa375a.chunk.css",
+    "main.js": "/lorenz-attractor-playground/static/js/main.9b91ef79.chunk.js",
+    "main.js.map": "/lorenz-attractor-playground/static/js/main.9b91ef79.chunk.js.map",
+    "runtime-main.js": "/lorenz-attractor-playground/static/js/runtime-main.c2c2dcd9.js",
+    "runtime-main.js.map": "/lorenz-attractor-playground/static/js/runtime-main.c2c2dcd9.js.map",
+    "static/js/2.03683cb3.chunk.js": "/lorenz-attractor-playground/static/js/2.03683cb3.chunk.js",
+    "static/js/2.03683cb3.chunk.js.map": "/lorenz-attractor-playground/static/js/2.03683cb3.chunk.js.map",
+    "index.html": "/lorenz-attractor-playground/index.html",
+    "static/css/main.6aaa375a.chunk.css.map": "/lorenz-attractor-playground/static/css/main.6aaa375a.chunk.css.map",
+    "static/js/2.03683cb3.chunk.js.LICENSE.txt": "/lorenz-attractor-playground/static/js/2.03683cb3.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c2c2dcd9.js",
+    "static/js/2.03683cb3.chunk.js",
+    "static/css/main.6aaa375a.chunk.css",
+    "static/js/main.9b91ef79.chunk.js"
+  ]
+}
