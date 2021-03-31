@@ -1,32 +1,10 @@
 
 import { Text } from "@react-three/drei";
-import { Box, useFlexSize } from '@react-three/flex'
+import { Box } from '@react-three/flex'
 import { Plane, TransformControls, Sphere } from '@react-three/drei'
 import { useRef, useMemo  } from 'react';
 import { useFrame, useUpdate } from 'react-three-fiber';
 import { Vector3 } from 'three'
-
-
-const baseData = {
-    start: 10,
-    end: 200,
-    increment: 0.001,
-    rho: 28,
-    sigma: 10,
-    beta: 8/3,
-    x: 0.0001,
-    y: 0.0001,
-    z: 0.0001
-}
-
-const a1 =  {
-    ...baseData
-}
-
-const a2 =  {
-    ...baseData,
-    z: 0.0001
-}
 
 function BallWithTrail(props) {
     const { 
@@ -69,15 +47,15 @@ function BallWithTrail(props) {
 
 function LorenzBall(props) {
     const { 
-        time,
         color = 'red',
         increment,
         rho,
         sigma,
         beta,
-        length
+        length,
+        start
     } = props;
-    const points = useMemo(() => (lorenzPoints({...props})), [rho, sigma, beta, increment, length]);
+    const points = useMemo(() => (lorenzPoints({rho, sigma, beta, increment, length, start})), [rho, sigma, beta, increment, length, start]);
 
     return (<BallWithTrail points={ points } color={ color } />)
 }
@@ -148,7 +126,7 @@ export default function Chaos() {
             <Box width="100%" height="100%" centerAnchor>
                 <TransformControls mode={'rotate'} size={0.05}>
                     <group scale={[0.15,0.15,0.15]} position={[-1,-4.5,0]} rotation={[Math.PI/2, Math.PI*.95,Math.PI*.7]} rotationbak={[0,Math.PI / 4,Math.PI / 2]}>
-                        <LorenzBall length={2500} increment={0.01} color={'red'} />
+                        <LorenzBall length={2500} increment={0.01} color={'red'} start={[0.01,0.01,0.01]} />
                         <LorenzBall length={2500} increment={0.01} color={'pink'} start={[0.011,0.01,0.01]} />
                         <LorenzBall length={2500} increment={0.01} color={'orange'} start={[0.012,0.01,0.01]} />
                     </group>

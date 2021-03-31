@@ -22,7 +22,7 @@ export default function CenterText(props) {
         anchorY : 'bottom'
     }
 
-    const [width, height] = useFlexSize()
+    const [width] = useFlexSize()
     const calcedMaxWidth = width * widthMod; // Math.min(1080, width * widthMod);
     
     return(<Box width="100%" height="100%" centerAnchor>
@@ -33,3 +33,4 @@ export default function CenterText(props) {
         />
     </Box>)
 }
+

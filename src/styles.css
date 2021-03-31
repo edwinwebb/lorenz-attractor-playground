@@ -29,14 +29,28 @@ body {
   left: 300px;
 }
 
+.playground {
+  font-family: 'Segoe UI', Helvetica, Tahoma, Geneva, Verdana, sans-serif;
+}
+
 label {
   display: inline-block;
   width: 180px;
   padding-left:10px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 input {
-  width: 100px;
+  width: 180px;
+  margin-left: 10px;
+  padding:5px;
+}
+
+hr {
+  width: 190px;
+  margin-left: 10px;
+  opacity: 0.5;
 }
 
 h1, p {
@@ -57,7 +71,8 @@ h1, p {
   height: 100vh !important; 
 }
 
-.maindiv.debug {
+.maindivdebug {
+  height: 800vh;
   background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(9,9,121,1) 1px, rgba(255,255,255,1) 1px, rgba(255,255,255,1) 100%);
   background-size: 100vw 100vh;
   background-repeat: repeat-y;
