@@ -9,7 +9,7 @@ import Attractor from './pages/Attractor';
 import Playground from './pages/Playground';
 import Title from './pages/Title';
 import CenterText from './CenterText';
-import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing/dist/index.cjs'
+import { EffectComposer, Noise } from '@react-three/postprocessing/dist/index.cjs'
 
 const state = {
     top: 0
@@ -18,10 +18,11 @@ const state = {
 function Content() {
     const pagesGroup = useRef();
     const { viewport, size } = useThree();
+
     useFrame(() => {
         const fromTop = state.top / (window.innerHeight * 5);
         const y = viewport.height * 5 * fromTop;
-        pagesGroup.current.position.y = lerp(pagesGroup.current.position.y, y, 0.1)
+        pagesGroup.current && (pagesGroup.current.position.y = lerp(pagesGroup.current.position.y, y, 0.1))
     })
     
     return(<group ref={pagesGroup}>
@@ -84,12 +85,9 @@ export default function App() {
             <Suspense fallback={null}>
                 <Content />
             </Suspense>
+            <EffectComposer>
+                <Noise opacity={0.02} />
+            </EffectComposer>
         </Canvas>
     </div>)
 }
-
-
-
-// const title = "Strange Attactor";
-// const body1 = "The chaotic system is locally unstable yet globally stable: once some sequences have entered the attractor, nearby points diverge from one another but never depart from the attractor."
-// const carJungQuote = 'in all chaos there is a cosmos, in all disorder and secret order'

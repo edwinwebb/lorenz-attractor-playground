@@ -1,12 +1,11 @@
 
 import { Text } from "@react-three/drei"
-import { Flex, Box, useFlexSize, useReflow } from '@react-three/flex'
+import { Box } from '@react-three/flex'
 import { useLoader } from 'react-three-fiber';
-import { Suspense, useEffect } from 'react'; 
 import * as THREE from 'three'
 
 const title = "Edward Norton Lorenz"
-const portrait = "Edward_lorenz.jpg"
+const portrait = "lorenz-attractor-playground/Edward_lorenz.jpg"
 const body1 = "Edward Norton Lorenz (May 23, 1917 – April 16, 2008) was an American mathematician and meteorologist who established the theoretical basis of weather and climate predictability, as well as the basis for computer-aided atmospheric physics and meteorology. He is best known as the founder of modern chaos theory, a branch of mathematics focusing on the behavior of dynamical systems that are highly sensitive to initial conditions."
 const body2 = "In chaos theory, the butterfly effect is the sensitive dependence on initial conditions in which a small change in one state of a deterministic nonlinear system can result in large differences in a later state."
 const textFormat = {
